@@ -7,7 +7,7 @@ import java.util.Random;
  * Si hay una mina en una posición guarda el número -1
  * Si no hay una mina, se guarda cuántas minas hay alrededor.
  * Almacena la puntuación de la partida
- * @author ivan hisado 
+ * @author ivan hisado 																
  *
  */
 public class ControlJuego {
@@ -29,14 +29,44 @@ public class ControlJuego {
 	}
 	
 	
+	public int generarAleatorio() {
+		Random rd = new Random();
+		int aleat = rd.nextInt(10);
+		return aleat;
+	}
+	
 	/**Método para generar un nuevo tablero de partida:
 	 * @pre: La estructura tablero debe existir. 
 	 * @post: Al final el tablero se habrá inicializado con tantas minas como marque la variable MINAS_INICIALES. 
 	 * 			El resto de posiciones que no son minas guardan en el entero cuántas minas hay alrededor de la celda
 	 */
+	
+	
+	
 	public void inicializarPartida(){
 
+		// INTRODUCIMOS UN NUMERO EN EJE DE LAS X y EN DE LAS Y
+		int x = 0, y = 0 ;
+		
 		//TODO: Repartir minas e inicializar puntaci�n. Si hubiese un tablero anterior, lo pongo todo a cero para inicializarlo.
+		
+		for (int i = 0; i < MINAS_INICIALES; i++) {
+			int  r  = generarAleatorio(); // PARA EL EJE X
+			int m = generarAleatorio(); // PARA EL EJE Y
+			
+			// SI SON DIREFENTES SE LO A�ADIMOS A LOS RESPECTIVOS EJES
+			if(x != r && y != m) {
+				x = r;
+				y = m;
+			tablero[x][y] = MINA; 
+			}else { // EN CASO DE QUE SEAN IGUALES VOLVEMOS A GENERAS LOS ALEATORIOS
+				r  = generarAleatorio(); // GENERAMOS NUEVOS ALEATORIOS
+				m = generarAleatorio();
+				tablero[r][m] = MINA; 
+			}
+		}
+			
+			
 		
 		
 		
@@ -50,8 +80,8 @@ public class ControlJuego {
 		}
 	}
 	
-	/**Cálculo de las minas adjuntas: 
-	 * Para calcular el número de minas tenemos que tener en cuenta que no nos salimos nunca del tablero.
+	/**Calculo de las minas adjuntas: 
+	 * Para calcular el numero de minas tenemos que tener en cuenta que no nos salimos nunca del tablero.
 	 * Por lo tanto, como mucho la i y la j valdrán LADO_TABLERO-1.
 	 * Por lo tanto, como poco la i y la j valdrán 0.
 	 * @param i: posición vertical de la casilla a rellenar
