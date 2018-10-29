@@ -13,7 +13,19 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
+/**
+ * Clase que implementa la interfaz grafica con sus correspondientes botones
+ * con el fin del juego al haber descrbierto todas las casillas y la puntacion obtenida.
+ * @author ivan hisado
+ * {@link inicializar()}
+ * {@code ventana.setVisible(true);
+		inicializarComponentes();
+		 inicializarListeners();}
+ *  @version 1.0
+ *  @since 28/10/2018
+ *  @see ControlJuego 
+ *
+ */
 public class VentanaPrincipal {
 
 	// La ventana principal, en este caso, guarda todos los componentes:
